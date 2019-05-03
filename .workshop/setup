@@ -1,0 +1,3 @@
+#!/bin/bash
+
+$HOME/odev/src/github.com/crunchydata/postgres-operator/deploy/deploy.sh
