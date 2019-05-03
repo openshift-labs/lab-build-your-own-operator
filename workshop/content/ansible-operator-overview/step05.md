@@ -1,3 +1,9 @@
+---
+Title: operator-sdk CLI
+PrevPage: step04
+NextPage: step06
+---
+
 Next, we'll learn how to use the operator-sdk CLI to create an Ansible Operator project with the 'new' command.
 
 A basic (but incomplete) 'new' command looks like this:
@@ -65,7 +71,9 @@ __Now it's your turn!__ We'll be building a [__Memcached__](https://memcached.or
 
 Go ahead and run the command below to generate the Ansible Operator project scaffolding.
 
-`operator-sdk new memcached-operator --type=ansible --api-version=cache.example.com/v1alpha1 --kind=Memcached --skip-git-init`{{execute}}
+```execute-1
+operator-sdk new memcached-operator --type=ansible --api-version=cache.example.com/v1alpha1 --kind=Memcached --skip-git-init
+```
 
 This creates a new memcached-operator project specifically for watching the
 Memcached resource with APIVersion 'cache.example.com/v1apha1' and Kind
@@ -75,11 +83,13 @@ Memcached resource with APIVersion 'cache.example.com/v1apha1' and Kind
 
 Inspect the memcached-operator directory structure for yourself with 'tree', and then 'cd' into it.
 
-`tree memcached-operator`{{execute}}
+```execute-1
+tree memcached-operator
+```
 
-`cd memcached-operator`{{execute}}
-
-
+```execute-1
+cd memcached-operator
+```
 
 ### Project Scaffolding Layout
 

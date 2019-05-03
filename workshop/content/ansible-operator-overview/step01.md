@@ -1,3 +1,9 @@
+---
+Title: Background
+PrevPage: index
+NextPage: step02
+---
+
 ***
 
 _This step doesn't require changes to the interactive environment, but feel free to explore._
@@ -20,14 +26,13 @@ A collection of building blocks from Operator SDK that enables Ansible to handle
 
 ## Included in Operator Framework
 
-Ansible Operator is one of the available type of Operators that Operator SDK is able to generate.   As of Fall 2018, Operator SDK assists with Golang, Helm, and Ansible
-
+Ansible Operator is one of the available types of Operators that Operator SDK is able to generate. Operator SDK can create an operator using with Golang, Helm, or Ansible.
 
 ## How do I use it?
 
 Build your Ansible code on top of a provided base image along with some metadata to map Kubernetes events to Ansible Playbooks or Roles.
 
-![Ansible Operator Flow](https://raw.githubusercontent.com/openshift-labs/learn-katacoda/master/ansibleop/ansible-operator-overview/assets/images/ansible-op-flow.png)
+![Ansible Operator Flow](ansible-op-flow.png)
 
 The following workflow is for a new **Ansible** operator:
 

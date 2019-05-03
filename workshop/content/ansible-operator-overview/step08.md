@@ -1,3 +1,9 @@
+---
+Title: Deploy Memcached with the Operator
+PrevPage: step07
+NextPage: step09
+---
+
 Now that we have deployed our Operator, let's create a CR and deploy an instance
 of memcached.
 
@@ -30,7 +36,9 @@ spec:
   size: 3
 ```
 
-`oc create -f deploy/crds/cache_v1alpha1_memcached_cr.yaml --as system:admin`{{execute}}
+```execute-1
+oc create -f deploy/crds/cache_v1alpha1_memcached_cr.yaml
+```
 
 ## Check that the Memcached Operator works as intended 
 Ensure that the memcached-operator creates the deployment for the CR:
@@ -62,18 +70,13 @@ memcached-operator-68b5b558c5-dxjwh 1/1   Running  0        2m
 Change the `spec.size` field in `deploy/crds/cache_v1alpha1_memcached_cr.yaml` from 3 to 4 and apply the
 change:
 
-<pre class="file"
- data-filename="/root/tutorial/memcached-operator/deploy/crds/cache_v1alpha1_memcached_cr.yaml"
-  data-target="replace">
-apiVersion: cache.example.com/v1alpha1
-kind: Memcached
-metadata:
-  name: example-memcached
-spec:
-  size: 4
-</pre>
+```execute-1
+sed -i -e 's/size: 3/size: 4/' deploy/crds/cache_v1alpha1_memcached_cr.yaml
+```
 
-`oc apply -f deploy/crds/cache_v1alpha1_memcached_cr.yaml --as system:admin`{{execute}}
+```execute-1
+oc apply -f deploy/crds/cache_v1alpha1_memcached_cr.yaml
+```
 
 Confirm that the Operator changes the deployment size:
 
@@ -88,13 +91,17 @@ memcached-operator  1       1        1           1          5m
 
 Inspect the YAML list of 'memcached' resources in your project, noting that the 'spec.size' field is now set to 4.
 
-`oc get memcached  -o yaml --as system:admin`{{execute}}
+```execute-1
+oc get memcached  -o yaml
+```
 
 ## Removing Memcached from the cluster 
 
 First, delete the 'memcached' CR, which will remove the 4 Memcached pods and the associated deployment.
 
-`oc delete -f deploy/crds/cache_v1alpha1_memcached_cr.yaml --as system:admin`{{execute}}
+```execute-1
+oc delete -f deploy/crds/cache_v1alpha1_memcached_cr.yaml
+```
 
 <small>
 ```sh
@@ -106,10 +113,14 @@ memcached-operator-7cc7cfdf86-vvjqk  1/1   Running 0        8m
 
 Then, delete the memcached-operator deployment.
 
-`oc delete -f deploy/operator.yaml`{{execute}}
+```execute-1
+oc delete -f deploy/operator.yaml
+```
 
 Finally, verify that the memcached-operator is no longer running.
 
-`oc get deployment`{{execute}}
+```execute-1
+oc get deployment
+```
 
 Now let's take a look at using the built-in 'local install' functionality of the SDK.  

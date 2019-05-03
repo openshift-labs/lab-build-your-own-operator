@@ -1,3 +1,9 @@
+---
+Title: Run the Operator Locally
+PrevPage: step08
+NextPage: finish
+---
+
 In order to speed up Operator deployment and testing, `operator-sdk` provides a mechanism to run the Operator outside of a cluster.
 
 
@@ -11,33 +17,31 @@ copied to a known location specified by the Dockerfile.
 To run our Operator locally, we will manually copy any Roles used by our Operator to a configured Ansible
 Roles path for our local machine (e.g /etc/ansible/roles).
 
-`cp -r ~/tutorial/memcached-operator/roles/dymurray.memcached_operator_role /opt/ansible/roles/`{{execute}}
+```execute-1
+cp -r roles/dymurray.memcached_operator_role /opt/ansible/roles/
+```
 
 ## Running with 'operator-sdk up local'
 
-### Sample Commands
-Running `operator-sdk up local` to run an Operator locally requires a KUBECONFIG value to connect with a cluster. Some sample commands are shown below.
-```sh
-$ operator-sdk up local # default, KUBECONFIG=$HOME/.kube/config
-```
-```sh
-$ operator-sdk up local --kubeconfig=/tmp/config # KUBECONFIG='/tmp/config'
-```
-
-For this scenario, there is a properly permissioned KUBECONFIG at ~/backup/.kube/config.  We'll run the command below to use it.
 
 ### Start the Operator
-`operator-sdk up local --kubeconfig=/root/backup/.kube/config --namespace tutorial`{{execute}}
+```execute-1
+operator-sdk up local --namespace tutorial
+```
 
-Next open a 2nd terminal window, using the "+" tab and navigate to our Operator.
+Next start using the second terminal window.
 
-`cd ~/tutorial/memcached-operator`{{execute}}
+```execute-2
+cd memcached-operator
+```
 
 ### Create the Custom Resource
 
 Create the example Memcached CR that was generated at deploy/crds/cache_v1alpha1_memcached_cr.yaml:
 
-`oc create -f deploy/crds/cache_v1alpha1_memcached_cr.yaml --as system:admin`{{execute}}
+```execute-2
+oc create -f deploy/crds/cache_v1alpha1_memcached_cr.yaml
+```
 
 Ensure that the memcached-operator creates the deployment for the CR:
 
@@ -66,12 +70,22 @@ example-memcached-6cc844747c-xp8qp 1/1   Running  0        1m
 
 Clean up the resources:
 
-`oc delete -f deploy/crds/cache_v1alpha1_memcached_cr.yaml --as system:admin`{{execute}}
+```execute-2
+oc delete -f deploy/crds/cache_v1alpha1_memcached_cr.yaml
+```
 
-`oc delete -f deploy/role_binding.yaml`{{execute}}
+```execute-2
+oc delete -f deploy/role_binding.yaml
+```
 
-`oc delete -f deploy/role.yaml`{{execute}}
+```execute-2
+oc delete -f deploy/role.yaml
+```
 
-`oc delete -f deploy/service_account.yaml`{{execute}}
+```execute-2
+oc delete -f deploy/service_account.yaml
+```
 
-`oc delete -f deploy/crds/cache_v1alpha1_memcached_crd.yaml --as system:admin`{{execute}}
+```execute-2
+oc delete -f deploy/crds/cache_v1alpha1_memcached_crd.yaml
+```

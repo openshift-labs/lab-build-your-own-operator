@@ -1,3 +1,9 @@
+---
+Title: Custom Resources
+PrevPage: step02
+NextPage: step04
+---
+
 ***
 
 _This step doesn't require changes to the interactive environment, but feel free to explore._
