@@ -1,3 +1,8 @@
+---
+Title: Overview of the Etcd Operator
+NextPage: step01
+---
+
 The etcd operator manages etcd clusters deployed to Kubernetes and automates tasks related to operating an etcd cluster.
 
 - [Create and Destroy](https://github.com/coreos/etcd-operator#create-and-destroy-an-etcd-cluster)

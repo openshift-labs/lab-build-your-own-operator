@@ -1,12 +1,18 @@
-Let's begin my creating a new project called `myproject`:
+---
+Title: Create a New Project
+PrevPage: intro
+NextPage: step02
+---
 
-```
+Let's begin by creating a new project called `myproject`:
+
+```execute-1
 oc new-project myproject
-```{{execute}}
+```
 <br>
 Create the Custom Resource Definition (CRD) for the Etcd Operator:
 
-```
+```execute-1
 cat > etcd-operator-crd.yaml<<EOF
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
@@ -29,14 +35,14 @@ spec:
     served: true
     storage: true
 EOF
-```{{execute}}
-<br>
 ```
+<br>
+```execute-1
 oc create -f etcd-operator-crd.yaml
-```{{execute}}
+```
 <br>
 Verify the CRD was successfully created.
 
-```
+```execute-1
 oc get crd
-```{{execute}}
+```
