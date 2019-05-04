@@ -1,8 +1,13 @@
+---
+Title: Add Reconcile Logic
+PrevPage: step04
+NextPage: step06
+---
+
 Modify the PodSet controller logic at `go/src/github.com/redhat/podset-operator/pkg/controller/podset/podset_controller.go`:
 
-<pre class="file"
- data-filename="/root/tutorial/go/src/github.com/podset-operator/pkg/controller/podset/podset_controller.go"
-  data-target="replace">
+```execute-1
+cat >go/src/github.com/redhat/podset-operator/pkg/controller/podset/podset_controller.go <<EOL
 package podset
 
 import (
@@ -202,4 +207,5 @@ func newPodForCR(cr *appv1alpha1.PodSet) *corev1.Pod {
 		},
 	}
 }
-</pre>
+EOL
+```
