@@ -30,16 +30,16 @@ See the output of the [lab setup](#Lab_Setup) section (below) for a link to your
 
 ### Lab Setup
 
-see https://github.com/openshift-labs/workshop-terminal?
-
 1. Deploy the lab materials and a web terminal with access to `kubectl` and `oc` command-line tools (`cluster-admin` access level required)
 
-   1. oc new-project workshops
-   2. ./.workshop/scripts/deploy-spawner.sh
-   3. ./.workshop/scripts/build-workshop.sh
-   4. oc get route, open the resulting url to access your web terminal
+   1. export GUID="YOUR_V4_CLUSTER_GUID_HERE"
+   2. oc login https://api.cluster-$GUID.$GUID.openshiftworkshop.com:6443
+   3. oc new-project workshops
+   4. ./.workshop/scripts/deploy-spawner.sh
+   5. ./.workshop/scripts/build-workshop.sh
+   6. oc get route, open the resulting url to access your web terminal
 
 2. Connect to the web terminal and use `oc login` to authenticate as a cluster-admin:
 
-   1. copy the login command from the cluster console
-   2. paste the login command into your web terminal
+   1. paste the login command into your web terminal:
+      oc login https://api.cluster-$GUID.$GUID.openshiftworkshop.com:6443
