@@ -1,5 +1,7 @@
 FROM quay.io/openshiftlabs/workshop-dashboard:2.10.3
 
+RUN yum install -y jq tree ansible python-devel golang
+
 USER root
 
 COPY . /tmp/src
