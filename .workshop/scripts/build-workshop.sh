@@ -8,7 +8,7 @@ fail()
 
 WORKSHOP_NAME=lab-build-your-own-operator
 
-JUPYTERHUB_APPLICATION=${JUPYTERHUB_APPLICATION:-build-operator-lab}
+JUPYTERHUB_APPLICATION=${JUPYTERHUB_APPLICATION:-build-your-own-operator-lab}
 
 JUPYTERHUB_NAMESPACE=`oc project --short 2>/dev/null`
 
