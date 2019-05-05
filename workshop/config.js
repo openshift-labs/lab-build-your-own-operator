@@ -11,7 +11,7 @@ var google_analytics = `
 `;
 
 var config = {
-    site_title: 'Build You Own Operator (hands-on workshop)',
+    site_title: 'Build Your Own Operator (hands-on workshop)',
 
     analytics: google_analytics,
 
