@@ -1,3 +1,9 @@
+---
+Title: Finished
+PrevPage: step07
+ExitSign: Finish Workshop
+---
+
 Thank you for taking a closer look at the *Go Operator*.  For more
 Information, check out the links below:
 

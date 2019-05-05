@@ -1,34 +1,40 @@
-Let's begin my creating a new project called `myproject`:
+---
+Title: Create a New Project
+PrevPage: intro
+NextPage: step02
+---
 
-```
+Let's begin by creating a new project called `myproject`:
+
+```execute-1
 oc new-project myproject
-```{{execute}}
+```
 <br>
 Let's now create a new directory in our `$GOPATH/src/` directory:
 
-```
+```execute-1
 mkdir -p $GOPATH/src/github.com/redhat/
-```{{execute}}
+```
 <br>
 Navigate to the directory:
 
-```
+```execute-1
 cd $GOPATH/src/github.com/redhat/
-```{{execute}}
+```
 <br>
 Create a new Go-based Operator SDK project for the PodSet:
 
-```
+```execute-1
 operator-sdk new podset-operator --type=go --skip-git-init
-```{{execute}}
+```
 
 
 <br>
 Navigate to the project root:
 
-```
+```execute-1
 cd podset-operator
-```{{execute}}
+```
 <br>
 
 #### Operator scope

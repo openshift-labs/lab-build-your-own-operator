@@ -1,3 +1,8 @@
+---
+Title: Operator SDK with Go
+NextPage: step01
+---
+
 ## Why an Operator?
 
 Operators make it easy to manage complex stateful applications on top of Kubernetes. However writing an Operator today can be difficult because of challenges such as using low level APIs, writing boilerplate, and a lack of modularity which leads to duplication.
@@ -12,7 +17,7 @@ The Operator SDK is a framework that uses the controller-runtime library to make
 
 ## How do I use it?
 
-The following is the workflow is for a new **Go-based** Operator with the Operator SDK:
+The following is the workflow for a new **Go-based** Operator with the Operator SDK:
 
 1. Create a new Operator project using the SDK CLI.
 2. Create a new Custom Resource Definition API Type using the SDK CLI.
