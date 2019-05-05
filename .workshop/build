@@ -6,23 +6,21 @@ set -eo pipefail
 
 # Download and unpack the operator binaries and config files.
 
-mkdir -p $HOME/odev/bin
-mkdir -p $HOME/odev/pkg
-mkdir -p $HOME/jan/test
+mkdir -p $HOME/go/bin
+mkdir -p $HOME/go/pkg
 
 echo "export GOPATH=$HOME/go" >> ~/.bashrc
 echo "export GOBIN=$GOPATH/bin" >> ~/.bashrc
 echo "export PATH=\$PATH:\$GOROOT/bin:\$GOPATH/bin" >> ~/.bashrc
 . ~/.bashrc
 
-mkdir -p $GOPATH/bin
 # install "dep"
 curl -L https://github.com/golang/dep/releases/download/v0.5.1/dep-linux-amd64 -o $GOPATH/bin/dep
 chmod 755 $GOPATH/bin/dep
 
 # install operator-sdk
-curl -L https://github.com/operator-framework/operator-sdk/releases/download/v0.7.0/operator-sdk-v0.7.0-x86_64-linux-gnu -o $HOME/odev/bin/operator-sdk
-chmod 755 $HOME/odev/bin/operator-sdk
+curl -L https://github.com/operator-framework/operator-sdk/releases/download/v0.7.0/operator-sdk-v0.7.0-x86_64-linux-gnu -o $HOME/go/bin/operator-sdk
+chmod 755 $HOME/go/bin/operator-sdk
 
 # setup git profile
 git config --global user.email "operator-sdk@example.com"
