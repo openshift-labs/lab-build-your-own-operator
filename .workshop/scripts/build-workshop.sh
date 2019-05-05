@@ -6,9 +6,9 @@ fail()
     exit 1
 }
 
-WORKSHOP_NAME=lab-postgres-operator
+WORKSHOP_NAME=lab-build-your-own-operator
 
-JUPYTERHUB_APPLICATION=${JUPYTERHUB_APPLICATION:-postgres-lab}
+JUPYTERHUB_APPLICATION=${JUPYTERHUB_APPLICATION:-build-operator-lab}
 
 JUPYTERHUB_NAMESPACE=`oc project --short 2>/dev/null`
 
