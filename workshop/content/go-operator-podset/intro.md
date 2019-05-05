@@ -1,6 +1,6 @@
 ---
 Title: Operator SDK with Go
-PrevPage: etcd-operator/finish
+PrevPage: ../etcd-operator/finish
 NextPage: step01
 ---
 

@@ -2,7 +2,6 @@
 Title: Finished
 PrevPage: step09
 NextPage: ../finish
-ExitSign: Finish Workshop
 ---
 
 Thank you for taking a closer look at the *Ansible Operator*.  For more

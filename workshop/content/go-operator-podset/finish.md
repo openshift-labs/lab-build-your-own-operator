@@ -1,7 +1,7 @@
 ---
 Title: Finished
 PrevPage: step07
-NextPage: ../ansible-operator-overview/intro
+NextPage: ../ansible-operator-overview/index
 ---
 
 Thank you for taking a closer look at the *Go Operator*.  For more
