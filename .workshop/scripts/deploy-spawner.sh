@@ -17,6 +17,9 @@ JUPYTERHUB_APPLICATION=${JUPYTERHUB_APPLICATION:-build-your-own-operator-lab}
 
 JUPYTERHUB_NAMESPACE=`oc project --short 2>/dev/null`
 
+IDLE_TIMEOUT=900
+MAX_SESSION_AGE=9000
+
 if [ "$?" != "0" ]; then
 fail "Error: Cannot determine name of project."
 exit 1
@@ -28,7 +31,9 @@ echo
 
 oc process -f $TEMPLATE_PATH \
 --param APPLICATION_NAME="$JUPYTERHUB_APPLICATION" \
---param PROJECT_NAME="$JUPYTERHUB_NAMESPACE" | oc apply -f -
+--param PROJECT_NAME="$JUPYTERHUB_NAMESPACE" \
+--param IDLE_TIMEOUT="$IDLE_TIMEOUT" \
+--param MAX_SESSION_AGE="$MAX_SESSION_AGE" | oc apply -f -
 
 if [ "$?" != "0" ]; then
 fail "Error: Failed to create deployment for spawner."
@@ -46,53 +51,53 @@ fail "Error: Deployment of spawner failed to complete."
 exit 1
 fi
 
-echo
-echo "### Install global operator definitions."
-echo
+# echo
+# echo "### Install global operator definitions."
+# echo
 
-oc apply -f .workshop/resources/ --recursive
+# oc apply -f .workshop/resources/ --recursive
 
-if [ "$?" != "0" ]; then
-fail "Error: Failed to create global operator definitions."
-exit 1
-fi
+# if [ "$?" != "0" ]; then
+# fail "Error: Failed to create global operator definitions."
+# exit 1
+# fi
 
-echo
-echo "### Update spawner configuration for workshop."
-echo
+# echo
+# echo "### Update spawner configuration for workshop."
+# echo
 
-oc process -f .workshop/templates/clusterroles-session-rules.yaml \
---param JUPYTERHUB_APPLICATION="$JUPYTERHUB_APPLICATION" \
---param JUPYTERHUB_NAMESPACE="$JUPYTERHUB_NAMESPACE" | oc apply -f - && \
-oc process -f .workshop/templates/clusterroles-spawner-rules.yaml \
---param JUPYTERHUB_APPLICATION="$JUPYTERHUB_APPLICATION" \
---param JUPYTERHUB_NAMESPACE="$JUPYTERHUB_NAMESPACE" | oc apply -f - && \
-oc process -f .workshop/templates/configmap-extra-resources.yaml \
---param JUPYTERHUB_APPLICATION="$JUPYTERHUB_APPLICATION" \
---param JUPYTERHUB_NAMESPACE="$JUPYTERHUB_NAMESPACE" | oc apply -f -
+# oc process -f .workshop/templates/clusterroles-session-rules.yaml \
+# --param JUPYTERHUB_APPLICATION="$JUPYTERHUB_APPLICATION" \
+# --param JUPYTERHUB_NAMESPACE="$JUPYTERHUB_NAMESPACE" | oc apply -f - && \
+# oc process -f .workshop/templates/clusterroles-spawner-rules.yaml \
+# --param JUPYTERHUB_APPLICATION="$JUPYTERHUB_APPLICATION" \
+# --param JUPYTERHUB_NAMESPACE="$JUPYTERHUB_NAMESPACE" | oc apply -f - && \
+# oc process -f .workshop/templates/configmap-extra-resources.yaml \
+# --param JUPYTERHUB_APPLICATION="$JUPYTERHUB_APPLICATION" \
+# --param JUPYTERHUB_NAMESPACE="$JUPYTERHUB_NAMESPACE" | oc apply -f -
 
-if [ "$?" != "0" ]; then
-fail "Error: Failed to udpate spawner configuration for workshop."
-exit 1
-fi
+# if [ "$?" != "0" ]; then
+# fail "Error: Failed to udpate spawner configuration for workshop."
+# exit 1
+# fi
 
-echo
-echo "### Restart the spawner with new configuration."
-echo
+# echo
+# echo "### Restart the spawner with new configuration."
+# echo
 
-oc rollout latest dc/"$JUPYTERHUB_APPLICATION"
+# oc rollout latest dc/"$JUPYTERHUB_APPLICATION"
 
-if [ "$?" != "0" ]; then
-fail "Error: Failed to restart the spawner."
-exit 1
-fi
+# if [ "$?" != "0" ]; then
+# fail "Error: Failed to restart the spawner."
+# exit 1
+# fi
 
-oc rollout status dc/"$JUPYTERHUB_APPLICATION"
+# oc rollout status dc/"$JUPYTERHUB_APPLICATION"
 
-if [ "$?" != "0" ]; then
-fail "Error: Deployment of spawner failed to complete."
-exit 1
-fi
+# if [ "$?" != "0" ]; then
+# fail "Error: Deployment of spawner failed to complete."
+# exit 1
+# fi
 
 echo
 echo "### Updating spawner to use image for workshop."
