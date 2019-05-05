@@ -1,6 +1,12 @@
+---
+Title: Create Deployment
+PrevPage: step02
+NextPage: step04
+---
+
 Create the Deployment containing the Etcd Operator container image:
 
-```
+```execute-1
 cat > etcd-operator-deployment.yaml<<EOF
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -38,34 +44,34 @@ spec:
         name: etcd-operator
       serviceAccountName: etcd-operator-sa
 EOF
-```{{execute}}
-<br>
 ```
+<br>
+```execute-1
 oc create -f etcd-operator-deployment.yaml 
-```{{execute}}
+```
 <br>
 Verify the Etcd Operator Deployment was successfully created:
 
-```
+```execute-1
 oc get deploy
-```{{execute}}
+```
 <br>
 Verify the Etcd Operator Deployment pods are running:
 
-```
+```execute-1
 oc get pods
-```{{execute}}
+```
 <br>
 Open a new terminal window to follow Etcd Operator logs in real-time:
 
-```
+```execute-1
 export ETCD_OPERATOR_POD=$(oc get pods -l name=etcd-operator -o jsonpath='{.items[0].metadata.name}')
 oc logs $ETCD_OPERATOR_POD -f
-```{{execute}}
+```
 <br>
 Observe the leader-election lease on the Etcd Operator Endpoint:
 
-```
+```execute-1
 oc get endpoints etcd-operator -o yaml
-```{{execute}}
+```
 <br>

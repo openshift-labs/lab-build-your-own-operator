@@ -1,3 +1,9 @@
+---
+Title: Finished
+PrevPage: step08
+ExitSign: Finish Workshop
+---
+
 For more information, check out the links below:
 
 ## Git Hub
