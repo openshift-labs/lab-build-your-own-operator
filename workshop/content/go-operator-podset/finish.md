@@ -1,7 +1,7 @@
 ---
 Title: Finished
 PrevPage: step07
-ExitSign: Finish Workshop
+NextPage: ../ansible-operator-overview/intro
 ---
 
 Thank you for taking a closer look at the *Go Operator*.  For more

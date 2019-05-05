@@ -1,6 +1,7 @@
 ---
 Title: Finished
 PrevPage: step09
+NextPage: ../finish
 ExitSign: Finish Workshop
 ---
 

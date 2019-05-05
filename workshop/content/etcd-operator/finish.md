@@ -1,7 +1,8 @@
 ---
 Title: Finished
 PrevPage: step08
-ExitSign: Finish Workshop
+NextPage: ../go-operator-podset/intro
+
 ---
 
 For more information, check out the links below:
