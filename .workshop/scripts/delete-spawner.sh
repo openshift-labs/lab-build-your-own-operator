@@ -3,7 +3,7 @@
 set -x
 set -eo pipefail
 
-JUPYTERHUB_APPLICATION=${JUPYTERHUB_APPLICATION:-postgres-lab}
+JUPYTERHUB_APPLICATION=${JUPYTERHUB_APPLICATION:-build-your-own-operator-lab}
 JUPYTERHUB_NAMESPACE=`oc project --short`
 
 APPLICATION_LABELS="app=$JUPYTERHUB_APPLICATION-$JUPYTERHUB_NAMESPACE,spawner=learning-portal"

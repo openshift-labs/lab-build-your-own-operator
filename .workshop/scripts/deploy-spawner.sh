@@ -6,14 +6,14 @@ fail()
     exit 1
 }
 
-WORKSHOP_IMAGE="quay.io/openshiftlabs/lab-postgres-operator:master"
+WORKSHOP_IMAGE="quay.io/openshiftlabs/lab-build-your-own-operator:v1"
 
 TEMPLATE_REPO=https://raw.githubusercontent.com/openshift-labs/workshop-spawner
 TEMPLATE_VERSION=3.0.3
 TEMPLATE_FILE=learning-portal-production.json
 TEMPLATE_PATH=$TEMPLATE_REPO/$TEMPLATE_VERSION/templates/$TEMPLATE_FILE
 
-JUPYTERHUB_APPLICATION=${JUPYTERHUB_APPLICATION:-postgres-lab}
+JUPYTERHUB_APPLICATION=${JUPYTERHUB_APPLICATION:-build-your-own-operator-lab}
 
 JUPYTERHUB_NAMESPACE=`oc project --short 2>/dev/null`
 
