@@ -30,14 +30,14 @@ git config --global user.name "OperatorSDK Lab"
 
 # Setup user environment with environment variables and bash completion.
 
-cat $HOME/.workshop/envvars >> /opt/app-root/etc/profile.d/operatorsdklab.sh
-cat $HOME/.workshop/envvars >> $HOME/.bash_profile
+# cat $HOME/.workshop/envvars >> /opt/app-root/etc/profile.d/operatorsdklab.sh
+# cat $HOME/.workshop/envvars >> $HOME/.bash_profile
 
-echo 'export CO_APISERVER_URL=https://`kubectl get service postgres-operator -o=jsonpath="{.spec.clusterIP}"`:8443' >> $HOME/.bash_profile
+# echo 'export CO_APISERVER_URL=https://`kubectl get service postgres-operator -o=jsonpath="{.spec.clusterIP}"`:8443' >> $HOME/.bash_profile
 
 # Fix up our own environment for executing remainder of commands.
 
-. $HOME/.workshop/envvars
+# . $HOME/.workshop/envvars
 
 # TODO is the below relevant?
 # Generate SSHD and API keys. These will be shared for all sessions.
