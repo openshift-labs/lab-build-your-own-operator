@@ -12,7 +12,7 @@ mkdir -p $HOME/go/pkg
 echo "export GOPATH=$HOME/go" >> ~/.bash_profile
 echo "export GOBIN=$GOPATH/bin" >> ~/.bash_profile
 echo "export PATH=\$PATH:\$GOROOT/bin:\$GOPATH/bin" >> ~/.bash_profile
-# . ~/.bash_profile
+. ~/.bash_profile
 
 # install "dep"
 curl -L https://github.com/golang/dep/releases/download/v0.5.1/dep-linux-amd64 -o $GOPATH/bin/dep
