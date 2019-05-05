@@ -5,8 +5,6 @@ USER root
 
 RUN yum install -y jq tree ansible python-devel golang docker-engine
 
-RUN curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-
 RUN pip install --trusted-host files.pythonhosted.org --trusted-host pypi.org --trusted-host pypi.python.org --upgrade pip
 RUN pip install --trusted-host files.pythonhosted.org --trusted-host pypi.org --trusted-host pypi.python.org --upgrade setuptools
 RUN pip install --trusted-host files.pythonhosted.org --trusted-host pypi.org --trusted-host pypi.python.org --ignore-installed ipaddress openshift
