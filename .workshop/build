@@ -6,36 +6,43 @@ set -eo pipefail
 
 # Download and unpack the operator binaries and config files.
 
-mkdir -p $HOME/odev/bin
-mkdir -p $HOME/odev/pkg
+mkdir -p $HOME/go/bin
+mkdir -p $HOME/go/pkg
 
-#mkdir -p $HOME/odev/src/github.com/crunchydata/postgres-operator
-#curl -sL -o /tmp/postgres-operator.tar.gz https://github.com/CrunchyData/postgres-operator/releases/download/3.5.2/postgres-operator.3.5.2.tar.gz
-#cd $HOME/odev/src/github.com/crunchydata/postgres-operator
-#tar xzf /tmp/postgres-operator.tar.gz
-#cp -a pgo $HOME/odev/bin/pgo
-#cp -a expenv $HOME/odev/bin/expenv
-#rm /tmp/postgres-operator.tar.gz
+echo "export GOPATH=$HOME/go" >> ~/.bash_profile
+echo "export GOBIN=$GOPATH/bin" >> ~/.bash_profile
+echo "export PATH=\$PATH:\$GOROOT/bin:\$GOPATH/bin" >> ~/.bash_profile
+. ~/.bash_profile
+
+# install "dep"
+curl -L https://github.com/golang/dep/releases/download/v0.5.1/dep-linux-amd64 -o $GOPATH/bin/dep
+chmod 755 $GOPATH/bin/dep
+
+# install operator-sdk
+curl -L https://github.com/operator-framework/operator-sdk/releases/download/v0.7.0/operator-sdk-v0.7.0-x86_64-linux-gnu -o $HOME/go/bin/operator-sdk
+chmod 755 $HOME/go/bin/operator-sdk
+
+# setup git profile
+git config --global user.email "operator-sdk@example.com"
+git config --global user.name "OperatorSDK Lab"
 
 # Setup user environment with environment variables and bash completion.
-#cat $HOME/.workshop/envvars >> /opt/app-root/etc/profile.d/postgres.sh
-cat $HOME/.workshop/envvars >> $HOME/.bash_profile
 
-#echo 'export CO_APISERVER_URL=https://`kubectl get service postgres-operator -o=jsonpath="{.spec.clusterIP}"`:8443' >> $HOME/.bash_profile
+# cat $HOME/.workshop/envvars >> /opt/app-root/etc/profile.d/operatorsdklab.sh
+# cat $HOME/.workshop/envvars >> $HOME/.bash_profile
 
-#cat examples/pgo-bash-completion >> $HOME/.bash_profile
+# echo 'export CO_APISERVER_URL=https://`kubectl get service postgres-operator -o=jsonpath="{.spec.clusterIP}"`:8443' >> $HOME/.bash_profile
 
 # Fix up our own environment for executing remainder of commands.
 
-. $HOME/.workshop/envvars
+# . $HOME/.workshop/envvars
 
+# TODO is the below relevant?
 # Generate SSHD and API keys. These will be shared for all sessions.
-
-. deploy/gen-sshd-keys.sh
-
-. deploy/gen-api-keys.sh
+# . deploy/gen-sshd-keys.sh
+# . deploy/gen-api-keys.sh
 
 mv $HOME/workshop /opt/app-root/workshop
 
-# Delete all non required files from the image
+# Delete all non required files from the image
 rm -rf Dockerfile README.md LICENSE
