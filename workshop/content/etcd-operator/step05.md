@@ -31,14 +31,18 @@ Set the etcd version and endpoint variables:
 export ETCDCTL_API=3
 export ETCDCTL_ENDPOINTS=example-etcd-cluster-client:2379
 ```
-<br>
 Attempt to write a key/value into the Etcd cluster:
 
 ```execute-2
 ./etcdctl put operator sdk
+```
+
+Now verify the entry was written:
+
+```execute-2
 ./etcdctl get operator
 ```
-<br>
+
 Exit out of the client pod:
 
 ```execute-2
