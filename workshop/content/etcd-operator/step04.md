@@ -33,6 +33,13 @@ Watch the pods in the Etcd cluster get created:
 ```execute-1
 oc get pods -l etcd_cluster=example-etcd-cluster -w
 ```
+
+Once the pods are running, just exit the watch:
+
+```execute-1
+<ctrl+c>
+```
+
 <br>
 Verify the cluster has been exposed via a ClusterIP service:
 
