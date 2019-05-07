@@ -59,12 +59,18 @@ oc get deploy
 Verify the Etcd Operator Deployment pods are running:
 
 ```execute-1
-oc get pods
+watch oc get pods
 ```
-<br>
-Open a new terminal window to follow Etcd Operator logs in real-time:
+
+Once they are running, and you see `1/1` on the __Ready__ field, just exit the watch:
 
 ```execute-1
+<ctrl+c>
+```
+
+In a new terminal window follow Etcd Operator logs in real-time:
+
+```execute-2
 export ETCD_OPERATOR_POD=$(oc get pods -l name=etcd-operator -o jsonpath='{.items[0].metadata.name}')
 oc logs $ETCD_OPERATOR_POD -f
 ```
@@ -74,4 +80,9 @@ Observe the leader-election lease on the Etcd Operator Endpoint:
 ```execute-1
 oc get endpoints etcd-operator -o yaml
 ```
-<br>
+
+Now let's stop following the logs.
+
+```execute-2
+<ctrl+c>
+```
