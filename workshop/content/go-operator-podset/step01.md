@@ -4,10 +4,10 @@ PrevPage: intro
 NextPage: step02
 ---
 
-Let's begin by creating a new project called `myproject`:
+Let's begin by creating a new project called `podset-operator`:
 
 ```execute-1
-oc new-project myproject
+oc new-project podset-operator
 ```
 <br>
 Let's now create a new directory in our `$GOPATH/src/` directory:
