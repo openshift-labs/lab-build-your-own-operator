@@ -5,12 +5,10 @@ NextPage: etcd-operator/intro
 ExitSign: Start Workshop
 ---
 
-Lab Session: Build your own Kubernetes Operator (with the Operator Framework).
+Lab Session: Build your own Kubernetes Operator with the Operator Framework
 
 Start the session by logging in as a cluster administrator using `oc login`:
 
 ```execute-1
 oc login
 ```
-
-Ask your lab instructor for the cluster-admin login credentials for this cluster.

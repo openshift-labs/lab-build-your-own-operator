@@ -41,7 +41,7 @@ cd podset-operator
 
 A namespace-scoped operator (the default) watches and manages resources in a single namespace, whereas a cluster-scoped operator watches and manages resources cluster-wide. Namespace-scoped operators are preferred because of their flexibility. They enable decoupled upgrades, namespace isolation for failures and monitoring, and differing API definitions. However, there are use cases where a cluster-scoped operator may make sense. For example, the [cert-manager](https://github.com/jetstack/cert-manager) operator is often deployed with cluster-scoped permissions and watches so that it can manage issuing certificates for an entire cluster.
 
-If you'd like to create your memcached-operator project to be cluster-scoped use the following `operator-sdk new` command instead:
+Alternatively, you could include the `cluster-scoped` flag to create operators that will monitor all namespaces within the cluster:
 
 ```
 # operator-sdk new podset-operator --cluster-scoped
