@@ -18,6 +18,7 @@ JUPYTERHUB_APPLICATION=${JUPYTERHUB_APPLICATION:-build-your-own-operator-lab}
 JUPYTERHUB_NAMESPACE=`oc project --short 2>/dev/null`
 
 IDLE_TIMEOUT=900
+WORKSHOP_MEMORY=2Gi
 MAX_SESSION_AGE=9000
 
 if [ "$?" != "0" ]; then
@@ -33,6 +34,7 @@ oc process -f $TEMPLATE_PATH \
 --param APPLICATION_NAME="$JUPYTERHUB_APPLICATION" \
 --param PROJECT_NAME="$JUPYTERHUB_NAMESPACE" \
 --param IDLE_TIMEOUT="$IDLE_TIMEOUT" \
+--param WORKSHOP_MEMORY="$WORKSHOP_MEMORY" \
 --param MAX_SESSION_AGE="$MAX_SESSION_AGE" | oc apply -f -
 
 if [ "$?" != "0" ]; then
