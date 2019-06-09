@@ -6,11 +6,18 @@ set -eo pipefail
 
 # Download and unpack the operator binaries and config files.
 
+# install golang
+wget https://dl.google.com/go/go1.12.5.linux-amd64.tar.gz -P /tmp
+tar -C /opt/app-root/bin -xzf /tmp/go1.12.5.linux-amd64.tar.gz
+
 mkdir -p $HOME/go/bin
 mkdir -p $HOME/go/pkg
+mkdir -p $HOME/go/src
 
 echo "export GOPATH=$HOME/go" >> ~/.bash_profile
 echo "export GOBIN=$GOPATH/bin" >> ~/.bash_profile
+echo "export GOROOT=/opt/app-root/bin/go" >> ~/.bash_profile
+
 echo "export PATH=\$PATH:\$GOROOT/bin:\$GOPATH/bin" >> ~/.bash_profile
 . ~/.bash_profile
 
