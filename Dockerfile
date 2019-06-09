@@ -3,7 +3,7 @@ FROM quay.io/openshiftlabs/workshop-dashboard:2.10.3
 
 USER root
 
-RUN yum install -y jq tree ansible python-devel golang docker-engine
+RUN yum install -y jq tree ansible python-devel docker-engine
 
 RUN pip install --trusted-host files.pythonhosted.org --trusted-host pypi.org --trusted-host pypi.python.org --upgrade pip
 RUN pip install --trusted-host files.pythonhosted.org --trusted-host pypi.org --trusted-host pypi.python.org --upgrade setuptools
